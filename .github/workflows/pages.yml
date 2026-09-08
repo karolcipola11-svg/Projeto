@@ -1,0 +1,41 @@
+name: Publicar prévia do site
+
+on:
+  push:
+    branches: [main, work]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  publicar:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar o site
+        uses: actions/checkout@v4
+      - name: Configurar o GitHub Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - name: Montar a prévia
+        run: |
+          mkdir _site
+          cp index.html styles.css script.js _site/
+          cp -r images _site/
+      - name: Preparar os arquivos
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - name: Publicar e gerar o link
+        id: deployment
+        uses: actions/deploy-pages@v4
