@@ -1,7 +1,7 @@
 # Projeto
 
-Site institucional da **MSE Marmoraria**, publicado automaticamente pelo GitHub
-Pages. Não é preciso instalar editor, abrir terminal ou baixar arquivos.
+Este repositório publica automaticamente uma versão navegável do site pelo
+GitHub Pages. Não é preciso instalar editor, abrir terminal ou baixar arquivos.
 
 ## Abrir a prévia pelo tablet
 

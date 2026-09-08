@@ -30,7 +30,7 @@ jobs:
       - name: Montar a prévia
         run: |
           mkdir _site
-          cp index.html styles.css script.js _site/
+          cp index.html styles.css _site/
       - name: Preparar os arquivos
         uses: actions/upload-pages-artifact@v3
         with:
